@@ -1,0 +1,197 @@
+/* Mobile-first styles */
+#root {
+  min-height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better touch targets on mobile */
+button, 
+input, 
+select, 
+textarea {
+  touch-action: manipulation;
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (max-width: 768px) {
+  input, 
+  select, 
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Custom scrollbar - Japanese minimal style */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(4 90% 58% / 0.3);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(4 90% 58% / 0.5);
+}
+
+/* Card glow effect */
+.card-glow {
+  position: relative;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, hsl(4 90% 58% / 0.08), hsl(45 80% 50% / 0.04));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+/* Input focus ring - Vermillion accent */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px hsl(4 90% 58% / 0.25);
+}
+
+/* Button hover glow */
+.btn-glow {
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 20px hsl(4 90% 58% / 0.25);
+  transform: translateY(-1px);
+}
+
+/* Tab indicator animation */
+.tab-indicator {
+  position: relative;
+}
+
+.tab-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, hsl(4 90% 58%), transparent);
+  transition: width 0.3s ease;
+}
+
+.tab-indicator[data-active="true"]::after {
+  width: 60%;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* Pulse glow for important elements */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(4 90% 58% / 0.25);
+  }
+  50% {
+    box-shadow: 0 0 15px hsl(4 90% 58% / 0.4);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Glass effect for cards */
+.glass-card {
+  background: hsl(0 0% 7% / 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid hsl(0 0% 18%);
+}
+
+/* Gold accent text */
+.text-gold {
+  color: hsl(45 80% 55%);
+}
+
+/* Vermillion accent text */
+.text-vermillion {
+  color: hsl(4 90% 58%);
+}
+
+/* Safe area for mobile */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Date input styling for dark theme */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+  cursor: pointer;
+}
+
+/* Selection color */
+::selection {
+  background: hsl(4 90% 58% / 0.3);
+  color: inherit;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid hsl(4 90% 58% / 0.5);
+  outline-offset: 2px;
+}
+
+/* Number input spinner styling */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
